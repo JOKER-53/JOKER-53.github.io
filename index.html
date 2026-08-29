@@ -34,6 +34,14 @@
   <div class="loader-ring"></div>
   <div class="loader-text">KADHIRAVAN // INITIALIZING</div>
 </div>
+<script>
+  window.addEventListener('load', function() {
+    setTimeout(function() {
+      var loader = document.getElementById('loader');
+      if (loader) loader.classList.add('fade-out');
+    }, 900);
+  });
+</script>
 
 <nav id="navBar">
   <div class="nav-container">

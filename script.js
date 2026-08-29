@@ -1,9 +1,5 @@
-AOS.init({ duration: 700, once: true });
+if (typeof AOS !== "undefined") AOS.init({ duration: 700, once: true });
 
-/* ---------- Loader ---------- */
-window.addEventListener('load', () => {
-  setTimeout(() => document.getElementById('loader').classList.add('fade-out'), 900);
-});
 
 /* ---------- Footer year ---------- */
 document.getElementById('year').textContent = new Date().getFullYear();
@@ -123,7 +119,7 @@ document.querySelectorAll('.copy-btn').forEach(btn => {
 });
 
 /* ---------- Swiper ---------- */
-new Swiper('#skillsSwiper', {
+if (typeof Swiper !== "undefined") new Swiper('#skillsSwiper', {
   slidesPerView: 1, spaceBetween: 20,
   breakpoints: { 768: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } },
   pagination: { el: '.swiper-pagination', clickable: true },
