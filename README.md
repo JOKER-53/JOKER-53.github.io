@@ -1,4 +1,4 @@
-# KADHIRAVANEG - Personal Portfolio
+# JOKER-53 - Personal Portfolio
 
 This is the personal portfolio and website of Kadhiravan E.G, a developer and Linux enthusiast focusing on building robust security tools, educational platforms, and exploring system internals.
 
@@ -22,8 +22,8 @@ The project is built using fundamental web technologies for a lightweight, perfo
 No build tools or package managers are required. Simply clone the repository and open `index.html` in your browser.
 
 ```bash
-git clone https://github.com/KADHIRAVANEG/KADHIRAVANEG.github.io.git
-cd KADHIRAVANEG.github.io
+git clone https://github.com/JOKER-53/JOKER-53.github.io.git
+cd JOKER-53.github.io
 # Open index.html in your favorite browser
 ```
 

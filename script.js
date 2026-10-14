@@ -289,7 +289,7 @@ document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && gActive)
 async function loadGitHub() {
   const ghRepoCount = document.getElementById('ghRepoCount');
   try {
-    const userRes = await fetch('https://api.github.com/users/KADHIRAVANEG');
+    const userRes = await fetch('https://api.github.com/users/JOKER-53');
     if (userRes.ok) {
       const user = await userRes.json();
       if (ghRepoCount && typeof user.public_repos === 'number') {
@@ -431,11 +431,11 @@ const cmdkActions = [
   { label: 'Go to Cyber Range (play the game)', icon: 'fa-gamepad', action: () => scrollToSel('#range') },
   { label: 'Go to Flagship Project', icon: 'fa-folder-open', action: () => scrollToSel('#project') },
   { label: 'Go to Contact', icon: 'fa-paper-plane', action: () => scrollToSel('#contact') },
-  { label: 'Open GitHub Profile', icon: 'fa-github', faPrefix: 'fab', action: () => window.open('https://github.com/KADHIRAVANEG', '_blank') },
-  { label: 'Open Intelligent Compiler repo', icon: 'fa-code', action: () => window.open('https://github.com/KADHIRAVANEG/IntelligentCompiler', '_blank') },
+  { label: 'Open GitHub Profile', icon: 'fa-github', faPrefix: 'fab', action: () => window.open('https://github.com/JOKER-53', '_blank') },
+  { label: 'Open Intelligent Compiler repo', icon: 'fa-code', action: () => window.open('https://github.com/JOKER-53/IntelligentCompiler', '_blank') },
   { label: 'Open LinkedIn', icon: 'fa-linkedin-in', faPrefix: 'fab', action: () => window.open('https://www.linkedin.com/in/kadhiravan-e-g-028818327', '_blank') },
   { label: 'Toggle dark / light theme', icon: 'fa-circle-half-stroke', action: () => toggle.click() },
-  { label: 'Copy email address', icon: 'fa-envelope', action: () => copyText('kadhiravanegk@gmail.com', 'Email copied to clipboard') },
+  { label: 'Copy email address', icon: 'fa-envelope', action: () => copyText('kadhiravan226@gmail.com', 'Email copied to clipboard') },
 ];
 
 function scrollToSel(sel) {
