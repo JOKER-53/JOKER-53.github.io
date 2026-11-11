@@ -1,402 +1,951 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<meta name="description" content="Kadhiravan E.G - Cybersecurity Architect. Penetration testing, red teaming, exploit development and tool building.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Kadhiravan E.G — Cybersecurity Engineering student. Cloud security automation, DevSecOps pipelines, offensive security.">
 <title>KADHIRAVAN E.G | Cybersecurity Architect</title>
-<!-- Primary: SVG for modern browsers -->
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%23000'/%3E%3Ctext x='50' y='68' font-size='56' fill='%23fff' text-anchor='middle' font-family='monospace' font-weight='700'%3EK%3C/text%3E%3C/svg%3E">
-
-<!-- Fallback: .ico for Safari, link previews, older browsers -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%230A0A0A'/%3E%3Ctext x='50' y='72' font-size='62' fill='%23E8213A' text-anchor='middle' font-family='monospace' font-weight='700'%3EK%3C/text%3E%3C/svg%3E">
 <link rel="alternate icon" type="image/x-icon" href="/favicon.ico">
-
-<!-- Apple devices -->
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-
 <link rel="manifest" href="/site.webmanifest">
-<!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#F5F0E8;--cream2:#EDE7DA;--cream3:#D4CFC7;
+  --red:#E8213A;--red-d:#C01830;
+  --black:#0A0A0A;--panel:#111111;
+  --yellow:#F5C842;
+  --b:2.5px solid var(--black);
+  --mono:'JetBrains Mono',monospace;
+  --disp:'Bebas Neue',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--cream);color:var(--black);font-family:var(--mono);overflow-x:hidden;cursor:crosshair}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer}
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:var(--cream)}
+::-webkit-scrollbar-thumb{background:var(--black)}
+::selection{background:var(--red);color:var(--cream)}
+:focus-visible{outline:3px solid var(--red);outline-offset:2px}
 
-<!-- Swiper -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+/* NAV */
+#nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  background:var(--black);
+  display:grid;grid-template-columns:auto 1fr auto;align-items:stretch;
+  height:52px;border-bottom:2px solid var(--red);
+}
+.nav-brand{
+  display:flex;align-items:center;padding:0 1.5rem;
+  border-right:1px solid #2a2a2a;
+  font-family:var(--disp);font-size:1.3rem;letter-spacing:0.08em;
+  color:var(--cream);white-space:nowrap;
+}
+.nav-brand em{color:var(--red);font-style:normal}
+.nav-links{display:flex;align-items:stretch}
+.nav-links a{
+  display:flex;align-items:center;padding:0 1.1rem;
+  font-size:0.65rem;font-weight:500;letter-spacing:0.12em;
+  color:#888;border-right:1px solid #1a1a1a;
+  transition:color 0.15s,background 0.15s;text-transform:uppercase;
+}
+.nav-links a:hover{color:var(--cream);background:#1a1a1a}
+.nav-right{display:flex;align-items:center;padding:0 1.5rem;border-left:1px solid #2a2a2a}
+.mob-btn{display:none;background:none;border:none;color:var(--cream);font-size:1.2rem;padding:0 1rem;height:52px;align-items:center}
 
-<!-- Font Awesome -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+/* HERO */
+.hero{min-height:100vh;padding-top:52px;display:grid;grid-template-rows:1fr auto}
+.hero-main{display:grid;grid-template-columns:1fr 380px;border-bottom:var(--b)}
+.hero-text{
+  padding:4rem 3rem 3rem;border-right:var(--b);
+  display:flex;flex-direction:column;justify-content:flex-end;
+  position:relative;overflow:hidden;
+}
+.hero-name-bg{
+  position:absolute;top:50%;left:50%;
+  transform:translate(-50%,-54%);
+  font-family:var(--disp);font-size:clamp(7rem,18vw,16rem);
+  line-height:0.88;color:var(--cream2);
+  user-select:none;pointer-events:none;white-space:nowrap;
+}
+.hero-fg{position:relative;z-index:2}
+.hero-role{font-size:0.7rem;font-weight:500;letter-spacing:0.14em;color:var(--red);margin-bottom:1.2rem;text-transform:uppercase}
+.hero-title{font-family:var(--disp);font-size:clamp(2.8rem,6vw,5.5rem);letter-spacing:0.03em;line-height:0.95;margin-bottom:1.8rem}
+.hero-title span{color:var(--red)}
+.hero-desc{font-size:0.8rem;line-height:1.9;color:#444;max-width:52ch;margin-bottom:2.2rem;font-weight:400}
+.hero-actions{display:flex;gap:0.8rem;flex-wrap:wrap;align-items:center}
 
-<!-- AOS -->
-<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+/* BUTTONS */
+.btn{
+  font-family:var(--mono);font-size:0.68rem;font-weight:600;
+  letter-spacing:0.1em;text-transform:uppercase;
+  padding:0.72rem 1.4rem;border:var(--b);
+  display:inline-flex;align-items:center;gap:0.5rem;
+  transition:transform 0.08s,box-shadow 0.08s,background 0.12s,color 0.12s;
+}
+.btn:active{transform:translate(2px,2px)!important;box-shadow:none!important}
+.btn-fill{background:var(--black);color:var(--cream);box-shadow:4px 4px 0 var(--red)}
+.btn-fill:hover{box-shadow:0 0 0;transform:translate(4px,4px)}
+.btn-ghost{background:transparent;color:var(--black);box-shadow:4px 4px 0 var(--black)}
+.btn-ghost:hover{background:var(--black);color:var(--cream);box-shadow:none;transform:translate(4px,4px)}
+.btn-red{background:var(--red);color:var(--cream);border-color:var(--red);box-shadow:4px 4px 0 var(--black)}
+.btn-red:hover{background:var(--red-d);transform:translate(4px,4px);box-shadow:none}
+.btn-yellow{background:var(--yellow);color:var(--black);border-color:var(--black);box-shadow:4px 4px 0 var(--black)}
+.btn-yellow:hover{transform:translate(4px,4px);box-shadow:none}
 
-<link rel="stylesheet" href="styles.css">
+/* HERO SIDEBAR */
+.hero-sidebar{display:flex;flex-direction:column}
+.stat-cell{flex:1;padding:1.8rem 2rem;border-bottom:var(--b);display:flex;flex-direction:column;justify-content:center}
+.stat-cell:last-child{border-bottom:none}
+.stat-cell:hover .stat-n{color:var(--red)}
+.stat-n{font-family:var(--disp);font-size:clamp(2.8rem,4.5vw,4rem);line-height:1;letter-spacing:0.02em;transition:color 0.2s}
+.stat-unit{font-size:1.4rem;color:var(--red)}
+.stat-lbl{font-size:0.62rem;color:#888;margin-top:0.3rem;letter-spacing:0.08em}
+
+/* MARQUEE */
+.marquee{overflow:hidden;background:var(--red);padding:0.65rem 0;border-bottom:var(--b)}
+.marquee-inner{display:flex;width:max-content;animation:march 30s linear infinite}
+.marquee-inner span{
+  font-size:0.65rem;font-weight:700;letter-spacing:0.14em;
+  color:var(--cream);white-space:nowrap;text-transform:uppercase;
+  padding:0 2.5rem;border-right:1px solid rgba(255,255,255,0.25);
+}
+@keyframes march{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* SECTION */
+.sec{border-bottom:var(--b)}
+.sec-inner{max-width:1300px;margin:0 auto;padding:5rem 3rem}
+.sec-head{
+  display:grid;grid-template-columns:auto 1fr;gap:2rem;align-items:baseline;
+  margin-bottom:3.5rem;padding-bottom:1.5rem;border-bottom:var(--b);
+}
+.sec-head h2{font-family:var(--disp);font-size:clamp(2.2rem,4vw,3.8rem);letter-spacing:0.04em;line-height:1}
+.sec-meta{font-size:0.65rem;color:#888;text-align:right;letter-spacing:0.06em}
+
+/* ABOUT */
+.about-layout{display:grid;grid-template-columns:1fr 1px 1fr}
+.about-divider{background:var(--black);width:1px}
+.about-col{padding:2.5rem 3rem}
+.about-col p{font-size:0.82rem;line-height:2;color:#3a3a3a;font-weight:400}
+.about-col p+p{margin-top:1rem}
+.stack-list{list-style:none;margin-top:2rem}
+.stack-list li{
+  font-size:0.72rem;line-height:1;padding:0.75rem 0;
+  border-bottom:1px solid var(--cream3);
+  display:flex;align-items:center;justify-content:space-between;color:#333;
+}
+.stack-list li:last-child{border-bottom:none}
+.stack-cat{color:var(--red);font-size:0.6rem;letter-spacing:0.1em}
+.platform-row{display:grid;grid-template-columns:repeat(4,1fr);border-top:var(--b);margin-top:3rem}
+.plat{padding:2rem 1.8rem;border-right:var(--b);cursor:pointer;transition:background 0.15s}
+.plat:last-child{border-right:none}
+.plat:hover{background:var(--black)}
+.plat:hover .plat-num,.plat:hover .plat-name,.plat:hover .plat-sub,.plat:hover .plat-handle{color:var(--cream)}
+.plat:hover .plat-num{color:var(--red)}
+.plat-name{font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;color:#888;margin-bottom:0.8rem;transition:color 0.15s}
+.plat-num{font-family:var(--disp);font-size:2.4rem;line-height:1;letter-spacing:0.02em;transition:color 0.15s}
+.plat-sub{font-size:0.62rem;color:#888;margin-top:0.3rem;transition:color 0.15s}
+.plat-handle{font-size:0.6rem;color:#aaa;margin-top:0.5rem;transition:color 0.15s}
+
+/* EDUCATION */
+.edu-list{display:grid;gap:0;border:var(--b)}
+.edu-item{display:grid;grid-template-columns:1fr auto;border-bottom:var(--b);padding:2rem 2.5rem;gap:2rem;align-items:start}
+.edu-item:last-child{border-bottom:none}
+.edu-school{font-size:0.9rem;font-weight:600;margin-bottom:0.3rem}
+.edu-degree{font-size:0.75rem;color:#555;font-weight:400;line-height:1.6}
+.edu-grade{font-family:var(--disp);font-size:1.6rem;color:var(--red);line-height:1;text-align:right;white-space:nowrap}
+.edu-loc{font-size:0.62rem;color:#888;text-align:right;margin-top:0.3rem}
+.edu-date{font-size:0.62rem;color:#888;text-align:right}
+
+/* TIMELINE */
+.timeline{position:relative}
+.tl-row{display:grid;grid-template-columns:200px 60px 1fr;border-top:var(--b)}
+.tl-row:last-child{border-bottom:var(--b)}
+.tl-year{padding:2.5rem 2rem;background:var(--black);display:flex;flex-direction:column;justify-content:center;border-right:var(--b)}
+.tl-year-n{font-family:var(--disp);font-size:2.5rem;color:var(--cream);line-height:1;letter-spacing:0.04em}
+.tl-year-tag{font-size:0.58rem;color:var(--red);letter-spacing:0.1em;margin-top:0.3rem}
+.tl-num{padding:2.5rem 1rem;border-right:var(--b);display:flex;align-items:flex-start;justify-content:center;padding-top:2.7rem;font-family:var(--disp);font-size:1.4rem;color:var(--cream3)}
+.tl-body{padding:2.5rem 3rem}
+.tl-body h3{font-size:0.95rem;font-weight:600;margin-bottom:0.6rem;letter-spacing:0.02em}
+.tl-body p{font-size:0.78rem;color:#555;line-height:1.9;font-weight:400;max-width:60ch}
+
+/* PROJECTS — pill tags like screenshot */
+.projects-wrap{display:grid;grid-template-columns:1fr 1fr;gap:0;border:var(--b)}
+.proj{
+  padding:3rem;border-right:var(--b);border-bottom:var(--b);
+  display:flex;flex-direction:column;position:relative;overflow:hidden;
+  transition:background 0.2s;
+}
+.proj::before{
+  content:'';position:absolute;left:0;top:0;bottom:0;width:3px;
+  background:var(--red);transform:scaleY(0);transform-origin:bottom;
+  transition:transform 0.3s;
+}
+.proj:hover::before{transform:scaleY(1)}
+.proj:nth-child(2n){border-right:none}
+.proj:nth-last-child(-n+2){border-bottom:none}
+.proj:hover{background:var(--panel)}
+.proj:hover .proj-name,.proj:hover .proj-desc,.proj:hover .proj-date{color:var(--cream)}
+.proj:hover .proj-num{color:var(--red)}
+.proj-num{font-size:0.6rem;color:var(--cream3);letter-spacing:0.14em;margin-bottom:0.8rem;transition:color 0.2s}
+.proj-name{font-family:var(--disp);font-size:clamp(1.4rem,2.5vw,2rem);letter-spacing:0.03em;margin-bottom:0.8rem;line-height:1;transition:color 0.2s}
+/* pill tags — matching the screenshot style */
+.proj-tags{display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:1rem;align-items:center}
+.proj-tag{
+  font-size:0.62rem;font-weight:700;letter-spacing:0.1em;
+  background:var(--red);color:var(--cream);
+  padding:0.22rem 0.65rem;text-transform:uppercase;
+  border-radius:0;/* brutalist — no radius */
+}
+.proj-tag-ghost{background:transparent;color:var(--black);border:1.5px solid var(--black)}
+.proj:hover .proj-tag-ghost{color:var(--cream);border-color:var(--cream)}
+.proj-sep{font-size:0.5rem;color:#ccc;margin:0 -0.1rem}
+.proj:hover .proj-sep{color:#555}
+.proj-date{font-size:0.62rem;color:#888;margin-bottom:0.8rem;transition:color 0.2s;letter-spacing:0.06em}
+.proj-desc{font-size:0.78rem;color:#555;line-height:1.9;flex:1;margin-bottom:1.8rem;max-width:50ch;font-weight:400;transition:color 0.2s}
+.proj-links{display:flex;gap:0.6rem;flex-wrap:wrap}
+.plink{
+  font-size:0.62rem;font-weight:700;letter-spacing:0.1em;
+  border:2px solid var(--black);padding:0.4rem 0.9rem;
+  text-transform:uppercase;transition:background 0.15s,color 0.15s,border-color 0.15s;
+}
+.plink:hover,.proj:hover .plink{background:var(--red);color:var(--cream);border-color:var(--red)}
+.plink-alt{background:var(--cream);color:var(--black)}
+.proj:hover .plink-alt{background:var(--cream);color:var(--black);border-color:var(--cream)}
+.proj:hover .plink-alt:hover{background:var(--red);border-color:var(--red);color:var(--cream)}
+
+/* Featured full-width */
+.proj-featured{
+  grid-column:1/-1;
+  display:grid;grid-template-columns:1fr 1fr;
+}
+.proj-featured::before{display:none}
+.proj-featured:hover{background:var(--panel)}
+.proj-featured:hover .proj-name,.proj-featured:hover .proj-desc,.proj-featured:hover .proj-date{color:var(--cream)}
+.proj-visual{
+  background:var(--black);
+  display:flex;align-items:center;justify-content:center;
+  border-left:var(--b);padding:3rem;
+}
+.proj-visual svg{opacity:0.5}
+
+/* CERTS */
+.certs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:var(--b)}
+.cert{
+  padding:2rem;border-right:var(--b);border-bottom:var(--b);
+  transition:background 0.15s;
+}
+.cert:nth-child(3n){border-right:none}
+.cert:nth-last-child(-n+3){border-bottom:none}
+.cert:hover{background:var(--black)}
+.cert:hover .cert-title,.cert:hover .cert-issuer{color:var(--cream)}
+.cert:hover .cert-badge{background:var(--red)}
+.cert-badge{
+  display:inline-block;font-size:0.58rem;font-weight:700;letter-spacing:0.1em;
+  padding:0.2rem 0.6rem;text-transform:uppercase;margin-bottom:0.8rem;
+  background:var(--yellow);color:var(--black);transition:background 0.15s;
+}
+.cert-badge.red{background:var(--red);color:var(--cream)}
+.cert-badge.black{background:var(--black);color:var(--cream)}
+.cert:hover .cert-badge.black{background:var(--red)}
+.cert-title{font-size:0.85rem;font-weight:600;margin-bottom:0.4rem;line-height:1.4;transition:color 0.15s}
+.cert-issuer{font-size:0.7rem;color:#888;transition:color 0.15s}
+
+/* CONTACT */
+.contact-wrap{display:grid;grid-template-columns:1fr 1fr;border:var(--b)}
+.contact-left{padding:3rem;border-right:var(--b)}
+.contact-right{padding:3rem;background:var(--black)}
+.cinfo{padding:1.2rem 0;border-bottom:1px solid var(--cream3);display:grid;grid-template-columns:72px 1fr;gap:1rem;align-items:center}
+.cinfo:last-of-type{border-bottom:none}
+.clabel{font-size:0.6rem;color:var(--red);letter-spacing:0.1em;text-transform:uppercase}
+.cval{font-size:0.78rem;display:flex;align-items:center;gap:0.7rem;flex-wrap:wrap}
+.cpybtn{
+  font-size:0.58rem;font-weight:700;letter-spacing:0.1em;
+  border:1.5px solid var(--black);background:none;
+  padding:0.2rem 0.5rem;text-transform:uppercase;
+  transition:background 0.12s,color 0.12s;
+}
+.cpybtn:hover{background:var(--black);color:var(--cream)}
+.socials-strip{display:flex;border:var(--b);margin-top:2rem}
+.soc-btn{
+  flex:1;height:52px;display:flex;align-items:center;justify-content:center;
+  border-right:var(--b);transition:background 0.15s,color 0.15s;font-size:0.9rem;
+}
+.soc-btn:last-child{border-right:none}
+.soc-btn:hover{background:var(--red);color:var(--cream)}
+.form-field{margin-bottom:1.2rem}
+.form-label{font-size:0.62rem;color:#888;letter-spacing:0.1em;text-transform:uppercase;display:block;margin-bottom:0.4rem}
+.form-ctrl{
+  width:100%;background:#1a1a1a;color:var(--cream);
+  border:1.5px solid #2a2a2a;padding:0.8rem 1rem;
+  font-family:var(--mono);font-size:0.78rem;
+  outline:none;resize:vertical;transition:border-color 0.15s;
+}
+.form-ctrl:focus{border-color:var(--red)}
+.form-ctrl::placeholder{color:#444}
+textarea.form-ctrl{min-height:110px}
+.form-submit{
+  width:100%;padding:0.9rem;
+  background:var(--red);color:var(--cream);border:none;
+  font-family:var(--mono);font-size:0.72rem;font-weight:700;
+  letter-spacing:0.14em;text-transform:uppercase;cursor:pointer;
+  transition:background 0.15s;
+}
+.form-submit:hover{background:var(--red-d)}
+
+/* FOOTER */
+footer{
+  background:var(--black);color:var(--cream);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.4rem 3rem;border-top:2px solid var(--red);
+  font-size:0.65rem;letter-spacing:0.08em;
+}
+footer span{color:var(--red)}
+footer a{color:#666;transition:color 0.15s}
+footer a:hover{color:var(--red)}
+
+/* BACK TO TOP */
+#btt{
+  position:fixed;bottom:2rem;right:2rem;z-index:150;
+  width:46px;height:46px;background:var(--black);color:var(--cream);
+  border:var(--b);box-shadow:4px 4px 0 var(--red);
+  font-size:1rem;display:flex;align-items:center;justify-content:center;
+  opacity:0;pointer-events:none;transition:opacity 0.3s,transform 0.08s,box-shadow 0.08s;
+}
+#btt.on{opacity:1;pointer-events:auto}
+#btt:hover{background:var(--red)}
+#btt:active{transform:translate(4px,4px);box-shadow:none}
+
+/* TOAST */
+#toast{
+  position:fixed;bottom:2rem;left:2rem;z-index:300;
+  background:var(--black);color:var(--cream);
+  font-size:0.72rem;padding:0.7rem 1.1rem;
+  border:var(--b);box-shadow:4px 4px 0 var(--red);
+  opacity:0;transform:translateY(8px);
+  transition:opacity 0.25s,transform 0.25s;pointer-events:none;
+}
+#toast.on{opacity:1;transform:translateY(0)}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .hero-main{grid-template-columns:1fr 300px}
+  .about-layout{grid-template-columns:1fr}
+  .about-divider{display:none}
+  .about-col{border-bottom:var(--b);padding:2rem}
+  .about-col:last-child{border-bottom:none}
+  .platform-row{grid-template-columns:1fr 1fr}
+  .plat:nth-child(2n){border-right:none}
+  .plat:nth-child(1),.plat:nth-child(2){border-bottom:var(--b)}
+  .certs-grid{grid-template-columns:1fr 1fr}
+  .cert:nth-child(2n){border-right:none}
+  .cert:nth-child(3n){border-right:var(--b)}
+  .cert:nth-last-child(-n+3){border-bottom:var(--b)}
+  .cert:nth-child(2n){border-right:none!important}
+  .cert:nth-last-child(-n+2){border-bottom:none!important}
+  .proj-featured{grid-template-columns:1fr}
+  .proj-visual{display:none}
+}
+@media(max-width:800px){
+  .hero-main{grid-template-columns:1fr}
+  .hero-sidebar{display:grid;grid-template-columns:repeat(2,1fr);border-top:var(--b)}
+  .hero-sidebar .stat-cell{border-right:var(--b)}
+  .hero-sidebar .stat-cell:nth-child(2n){border-right:none}
+  .hero-sidebar .stat-cell:nth-child(1),.hero-sidebar .stat-cell:nth-child(2){border-bottom:var(--b)}
+  .hero-text{border-right:none;padding:2.5rem 1.5rem}
+  .hero-name-bg{font-size:28vw;top:40%}
+  .nav-links{display:none}
+  .nav-links.open{display:flex;flex-direction:column;position:fixed;top:52px;left:0;right:0;background:var(--black);z-index:199;border-bottom:2px solid var(--red)}
+  .nav-links.open a{height:46px;border-right:none;border-bottom:1px solid #1a1a1a;justify-content:flex-start;padding-left:1.5rem}
+  .mob-btn{display:flex!important}
+  .projects-wrap{grid-template-columns:1fr}
+  .proj{border-right:none!important}
+  .proj:nth-last-child(-n+2){border-bottom:var(--b)!important}
+  .proj:last-child{border-bottom:none!important}
+  .contact-wrap{grid-template-columns:1fr}
+  .contact-left{border-right:none;border-bottom:var(--b)}
+  .sec-inner{padding:3rem 1.5rem}
+  footer{flex-direction:column;gap:0.4rem;padding:1.2rem 1.5rem;text-align:center}
+  .tl-row{grid-template-columns:100px 40px 1fr}
+  .tl-year{padding:1.5rem}
+  .tl-year-n{font-size:1.8rem}
+  .tl-body{padding:1.5rem}
+  .edu-item{grid-template-columns:1fr;gap:0.5rem}
+  .edu-grade,.edu-loc,.edu-date{text-align:left}
+  .certs-grid{grid-template-columns:1fr}
+  .cert{border-right:none!important}
+  .cert:nth-last-child(-n+2){border-bottom:var(--b)!important}
+  .cert:last-child{border-bottom:none!important}
+}
+@media(max-width:500px){
+  .tl-row{grid-template-columns:1fr}
+  .tl-year{border-right:none;border-bottom:var(--b);flex-direction:row;gap:1rem;align-items:center;padding:1rem 1.5rem}
+  .tl-num{display:none}
+  .platform-row{grid-template-columns:1fr 1fr}
+  .sec-head{grid-template-columns:1fr;gap:0.4rem}
+  .sec-meta{text-align:left}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
 </head>
 <body>
-<div class="cursor"></div>
-<div class="scroll-progress" id="scrollBar"></div>
-<canvas id="bgCanvas"></canvas>
 
-<div id="loader">
-  <div class="loader-ring"></div>
-  <div class="loader-text">KADHIRAVAN // INITIALIZING</div>
-</div>
-<script>
-  window.addEventListener('load', function() {
-    setTimeout(function() {
-      var loader = document.getElementById('loader');
-      if (loader) loader.classList.add('fade-out');
-    }, 900);
-  });
-</script>
-
-<nav id="navBar">
-  <div class="nav-container">
-    <a href="#" class="logo">KADHIRAVAN<span>.dev</span></a>
-    <div class="status-pill" id="statusPill"><span class="pulse-dot"></span> <span id="navClock">--:--:--</span> IST</div>
-    <div class="nav-links" id="navLinks">
-      <a href="#about">About</a>
-      <a href="#log">Log</a>
-      <a href="#showcase">Showcase</a>
-      <a href="#range">Range</a>
-      <a href="#project">Project</a>
-      <a href="#contact">Connect</a>
-      <button class="theme-toggle cmdk-trigger-btn" id="cmdkTrigger" aria-label="Open command palette" title="Quick navigate (Ctrl+K)"><i class="fas fa-magnifying-glass"></i></button>
-      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme"><i class="fas fa-moon"></i></button>
-    </div>
-    <button class="mobile-menu" id="mobileMenu" aria-label="Open menu"><i class="fas fa-bars"></i></button>
+<!-- NAV -->
+<nav id="nav">
+  <a href="#home" class="nav-brand">K<em>.</em>EG</a>
+  <div class="nav-links" id="navLinks">
+    <a href="#about">About</a>
+    <a href="#log">Log</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#certs">Certs</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="nav-right">
+    <button class="mob-btn" id="mobBtn" aria-label="Menu">☰</button>
   </div>
 </nav>
 
-<div class="container">
-
-  <!-- HERO -->
-  <div class="hero" id="home">
-    <div class="hero-content">
-      <div class="eyebrow"><span class="dot"></span> CYBERSECURITY ENTHUSIAST // DEVELOPER</div>
-      <h1><span class="glitch-name">KADHIRAVAN</span> <span class="underline glitch-name">E.G</span></h1>
-      <div class="role-line mono">&gt; <span id="roleText"></span><span class="blink">_</span></div>
-      <p class="hero-description reveal-words" id="heroDesc">I Use Arch btw.... Currently building network security tools, educational platforms, and exploring system internals.</p>
-      <div class="hero-cta">
-        <a href="#project" class="btn btn-primary"><i class="fas fa-folder-open"></i> View Work</a>
-        <a href="#contact" class="btn"><i class="fas fa-paper-plane"></i> Get In Touch</a>
-        <a href="#range" class="btn"><i class="fas fa-terminal"></i> Cyber Range</a>
-      </div>
-      <div class="hero-stats">
-        <div><div class="stat-number" data-count="24" data-suffix="">0</div><div class="stat-label">PUBLIC REPOS</div></div>
-        <div><div class="stat-number" data-count="10" data-suffix="+">0</div><div class="stat-label">PROJECTS</div></div>
-        <div><div class="stat-number" data-count="56" data-suffix="">0</div><div class="stat-label">THM ROOMS</div></div>
-      </div>
-    </div>
-    <div class="radar-wrap">
-      <svg viewBox="0 0 240 240" class="radar" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="120" cy="120" r="110"/>
-        <circle cx="120" cy="120" r="75"/>
-        <circle cx="120" cy="120" r="40"/>
-        <line x1="120" y1="8" x2="120" y2="232"/>
-        <line x1="8" y1="120" x2="232" y2="120"/>
-        <g class="radar-sweep">
-          <path d="M120 120 L120 10 A110 110 0 0 1 198 48 Z" fill="currentColor" stroke="none" opacity="0.12"/>
-          <line x1="120" y1="120" x2="120" y2="10" stroke-width="2"/>
-        </g>
-        <circle class="blip" cx="166" cy="76" r="4" fill="currentColor" stroke="none"/>
-        <circle class="blip blip2" cx="78" cy="160" r="4" fill="currentColor" stroke="none"/>
-        <circle class="blip blip3" cx="178" cy="166" r="3" fill="currentColor" stroke="none"/>
-      </svg>
-    </div>
-  </div>
-</div>
-
-<div class="marquee-wrap">
-  <div class="marquee-track">
-    <span><i class="fas fa-skull"></i> RED TEAMING</span>
-    <span><i class="fas fa-bug"></i> WEB EXPLOITATION</span>
-    <span><i class="fas fa-terminal"></i> EXPLOIT DEV</span>
-    <span><i class="fas fa-cloud"></i> CLOUD SECURITY</span>
-    <span><i class="fas fa-network-wired"></i> NETWORK PENTESTING</span>
-    <span><i class="fab fa-tryhackme"></i> CTF &amp; THM</span>
-    <span><i class="fas fa-code-branch"></i> OPEN SOURCE</span>
-    <span><i class="fas fa-shield-halved"></i> THREAT HUNTING</span>
-    <span><i class="fas fa-skull"></i> RED TEAMING</span>
-    <span><i class="fas fa-bug"></i> WEB EXPLOITATION</span>
-    <span><i class="fas fa-terminal"></i> EXPLOIT DEV</span>
-    <span><i class="fas fa-cloud"></i> CLOUD SECURITY</span>
-    <span><i class="fas fa-network-wired"></i> NETWORK PENTESTING</span>
-    <span><i class="fab fa-tryhackme"></i> CTF &amp; THM</span>
-    <span><i class="fas fa-code-branch"></i> OPEN SOURCE</span>
-    <span><i class="fas fa-shield-halved"></i> THREAT HUNTING</span>
-  </div>
-</div>
-
-<div class="container" style="padding-top:0;">
-
-  <!-- ABOUT -->
-  <section id="about">
-    <div class="section-head" data-aos="fade-up">
-      <span class="section-eyebrow">// 01 — PROFILE</span>
-      <h2 class="section-title">Profile / Root</h2>
-    </div>
-    <div class="about-grid">
-      <div data-aos="fade-up">
-        <p>Developer and Linux enthusiast with a passion for building robust security tools and educational platforms. I enjoy creating systems like FLAMES and Intelligent Compiler, translating complex concepts into hands-on environments.</p>
-        <div class="thm-progress">
-          <span><i class="fab fa-tryhackme"></i> TryHackMe Progress</span>
-          <div class="thm-bar-bg"><div class="thm-fill" id="thmFill"></div></div>
-          <span id="thmPercent">0%</span>
-        </div>
-      </div>
-      <div data-aos="fade-up" data-aos-delay="100">
-        <p>Core values: automate everything, build what you need, and share knowledge. From custom boot themes to full-stack desktop apps, I'm always building, hacking, and pushing limits in my Arch Linux environment.</p>
-        <div class="live-activity">
-          <span class="pulse-dot"></span>
-          <span>Status: Active — developing new tools</span>
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-main">
+    <div class="hero-text">
+      <div class="hero-name-bg" aria-hidden="true">KEG</div>
+      <div class="hero-fg">
+        <div class="hero-role">Cybersecurity Architect · DevSecOps · Cloud Security</div>
+        <h1 class="hero-title">KADHIRAVAN<br><span>E.G</span></h1>
+        <p class="hero-desc">Cybersecurity Engineering student with practical experience in cloud security automation, DevSecOps pipelines, and offensive security. Builds and ships open-source security tooling alongside academic coursework. CGPA 8.2 at Sri Shakthi Institute of Engineering and Technology, Coimbatore.</p>
+        <div class="hero-actions">
+          <a href="#projects" class="btn btn-fill">View Projects</a>
+          <a href="#contact" class="btn btn-ghost">Get in touch</a>
+          <a href="https://github.com/KADHIRAVANEG" target="_blank" rel="noopener" class="btn btn-red">GitHub</a>
+          <a href="KADHIRAVANEG-Resume.pdf" download class="btn btn-yellow">↓ Resume</a>
         </div>
       </div>
     </div>
-
-    <!-- SOCIAL DASHBOARD -->
-    <div class="social-dashboard" data-aos="fade-up">
-      <div class="social-card" onclick="window.open('https://github.com/JOKER-53','_blank')">
-        <i class="fab fa-github social-icon"></i><h3>GitHub</h3><div class="social-stats" id="ghRepoCount">—</div><div>repositories &amp; exploits</div><span class="social-link-btn">@JOKER-53</span>
+    <div class="hero-sidebar">
+      <div class="stat-cell">
+        <div class="stat-n" id="s1">0<span class="stat-unit">+</span></div>
+        <div class="stat-lbl">Public Repositories</div>
       </div>
-      <div class="social-card" onclick="window.open('https://www.linkedin.com/in/kadhiravan-e-g-028818327','_blank')">
-        <i class="fab fa-linkedin-in social-icon"></i><h3>LinkedIn</h3><div class="social-stats">650+</div><div>network &amp; security pros</div><span class="social-link-btn">Connect</span>
+      <div class="stat-cell">
+        <div class="stat-n" id="s2">Top 0<span class="stat-unit">%</span></div>
+        <div class="stat-lbl">TryHackMe global rank</div>
       </div>
-      <div class="social-card" onclick="window.open('https://www.instagram.com/__kadhiravan__','_blank')">
-        <i class="fab fa-instagram social-icon"></i><h3>Instagram</h3><div class="social-stats">2.8K+</div><div>followers | cyber lifestyle</div><span class="social-link-btn">@__kadhiravan__</span>
+      <div class="stat-cell">
+        <div class="stat-n" id="s3">0<span class="stat-unit">+</span></div>
+        <div class="stat-lbl">THM rooms completed</div>
       </div>
-      <div class="social-card" onclick="window.open('https://tryhackme.com/r/p/JOKER53','_blank')">
-        <i class="fas fa-shield-alt social-icon"></i><h3>TryHackMe</h3><div class="social-stats">Top 6%</div><div>56 rooms | 20+ badges</div><span class="social-link-btn">JOKER53 profile</span>
+      <div class="stat-cell">
+        <div class="stat-n" id="s4">8.2<span class="stat-unit"> CGPA</span></div>
+        <div class="stat-lbl">B.E. Cyber Security</div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- OPERATIONS LOG + BADGES -->
-  <section id="log" style="margin-top:6rem;">
-    <div class="section-head" data-aos="fade-up">
-      <span class="section-eyebrow">// 02 — TIMELINE</span>
-      <h2 class="section-title">Operations Log</h2>
-      <p class="section-sub">A rough chronology of the journey so far. Edit the dates and milestones below to match your own history.</p>
+<!-- MARQUEE -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-inner">
+    <span>Red Teaming</span><span>Web Exploitation</span><span>Exploit Development</span>
+    <span>Cloud Security</span><span>Network Pentesting</span><span>CTF · 1st Place SecLeaf Q4 2026</span>
+    <span>DevSecOps</span><span>Threat Hunting</span><span>Kubernetes Hardening</span>
+    <span>Red Teaming</span><span>Web Exploitation</span><span>Exploit Development</span>
+    <span>Cloud Security</span><span>Network Pentesting</span><span>CTF · 1st Place SecLeaf Q4 2026</span>
+    <span>DevSecOps</span><span>Threat Hunting</span><span>Kubernetes Hardening</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="sec" id="about">
+  <div class="sec-inner">
+    <div class="sec-head">
+      <h2>Who I Am</h2>
+      <div class="sec-meta">joker53.me · Coimbatore, TN</div>
+    </div>
+    <div class="about-layout">
+      <div class="about-col">
+        <p>Cybersecurity Engineering student at Sri Shakthi Institute of Engineering and Technology, Coimbatore — currently in B.E. Computer Science (Cyber Security), Sep 2024 – May 2028.</p>
+        <p>I build offensive security tools, automate cloud compliance infrastructure, and break systems ethically. Everything I build is open source. My work spans Terraform modules published on the OpenTofu Registry, Rust CLI tools on the Arch AUR, and browser-based security training platforms.</p>
+        <p>Actively sharpens skills through CTF competitions — 1st place at SecLeaf CTF Q4 2026 with Team BeyondBug.</p>
+      </div>
+      <div class="about-divider"></div>
+      <div class="about-col">
+        <ul class="stack-list">
+          <li>Python, Java, Bash, Rust <span class="stack-cat">Languages</span></li>
+          <li>Javascript, HTML, CSS <span class="stack-cat">Web Dev</span></li>
+          <li>AWS, Terraform, OpenTofu, LocalStack <span class="stack-cat">Cloud & IaC</span></li>
+          <li>Docker, Podman <span class="stack-cat">Containers</span></li>
+          <li>Jenkins, CI/CD, Prometheus, GitHub Actions <span class="stack-cat">DevOps</span></li>
+          <li>Linux, Git, Windows, Grafana <span class="stack-cat">Platforms</span></li>
+          <li>Burp Suite, Metasploit, Nmap, Wireshark <span class="stack-cat">Offensive</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="platform-row">
+      <div class="plat" onclick="open('https://github.com/KADHIRAVANEG','_blank')">
+        <div class="plat-name">GitHub</div>
+        <div class="plat-num">26</div>
+        <div class="plat-sub">Public repositories</div>
+        <div class="plat-handle">@KADHIRAVANEG</div>
+      </div>
+      <div class="plat" onclick="open('https://www.linkedin.com/in/kadhiravan-e-g','_blank')">
+        <div class="plat-name">LinkedIn</div>
+        <div class="plat-num">650<small style="font-size:1rem">+</small></div>
+        <div class="plat-sub">Connections</div>
+        <div class="plat-handle">kadhiravan-e-g</div>
+      </div>
+      <div class="plat" onclick="open('https://tryhackme.com/r/p/JOKER53','_blank')">
+        <div class="plat-name">TryHackMe</div>
+        <div class="plat-num">Top 6<small style="font-size:1rem">%</small></div>
+        <div class="plat-sub">56 rooms · 20+ badges</div>
+        <div class="plat-handle">JOKER53</div>
+      </div>
+      <div class="plat" onclick="open('https://www.instagram.com/__kadhiravan__','_blank')">
+        <div class="plat-name">Instagram</div>
+        <div class="plat-num">2.8K<small style="font-size:1rem">+</small></div>
+        <div class="plat-sub">Followers</div>
+        <div class="plat-handle">@__kadhiravan__</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section class="sec" id="education">
+  <div class="sec-inner">
+    <div class="sec-head">
+      <h2>Education</h2>
+      <div class="sec-meta">Tamil Nadu, India</div>
+    </div>
+    <div class="edu-list">
+      <div class="edu-item">
+        <div>
+          <div class="edu-school">Sri Shakthi Institute of Engineering and Technology</div>
+          <div class="edu-degree">B.E. Computer Science (Cyber Security)<br>Sep 2024 – May 2028 · Coimbatore, TN</div>
+        </div>
+        <div>
+          <div class="edu-grade">8.2*</div>
+          <div class="edu-loc">CGPA</div>
+        </div>
+      </div>
+      <div class="edu-item">
+        <div>
+          <div class="edu-school">Sree Gurukulam Higher Secondary School</div>
+          <div class="edu-degree">HSE — Mathematics and Computer Science<br>Jun 2022 – Mar 2024 · Erode, TN</div>
+        </div>
+        <div>
+          <div class="edu-grade">92%</div>
+          <div class="edu-loc">Grade</div>
+        </div>
+      </div>
+      <div class="edu-item">
+        <div>
+          <div class="edu-school">Govt Hingher Secondary School</div>
+          <div class="edu-degree">SSLC — Secondary School<br>Jun 2018 – Apr 2022 · Tiruppur, TN</div>
+        </div>
+        <div>
+          <div class="edu-grade">86%</div>
+          <div class="edu-loc">Grade</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="sec" id="log">
+  <div class="sec-inner">
+    <div class="sec-head">
+      <h2>Operations Log</h2>
+      <div class="sec-meta">2021 — present</div>
     </div>
     <div class="timeline">
-      <div class="timeline-item" data-aos="fade-up">
-        <div class="timeline-dot"></div>
-        <div class="timeline-date">2021 — INIT</div>
-        <h3>Started the journey</h3>
-        <p>Began learning networking, Linux and offensive security fundamentals. Created a TryHackMe account (JOKER53) and started grinding rooms.</p>
+      <div class="tl-row">
+        <div class="tl-year"><div class="tl-year-n">2021</div><div class="tl-year-tag">INIT</div></div>
+        <div class="tl-num">01</div>
+        <div class="tl-body"><h3>Started the journey</h3><p>Began learning networking, Linux and offensive security fundamentals. Created TryHackMe account (JOKER53) and started grinding rooms systematically.</p></div>
       </div>
-      <div class="timeline-item" data-aos="fade-up">
-        <div class="timeline-dot"></div>
-        <div class="timeline-date">2022 — FIRST BLOOD</div>
-        <h3>First CTFs &amp; first finds</h3>
-        <p>Entered first CTF competitions and started identifying real vulnerabilities in personal labs and test environments.</p>
+      <div class="tl-row">
+        <div class="tl-year"><div class="tl-year-n">2022</div><div class="tl-year-tag">FIRST BLOOD</div></div>
+        <div class="tl-num">02</div>
+        <div class="tl-body"><h3>First CTFs and first finds</h3><p>Entered first CTF competitions and started identifying real vulnerabilities in personal labs. First tangible results from hands-on offensive work.</p></div>
       </div>
-      <div class="timeline-item" data-aos="fade-up">
-        <div class="timeline-dot"></div>
-        <div class="timeline-date">2023 — SCALING UP</div>
-        <h3>Crossed 100+ vulnerabilities</h3>
-        <p>Ramped up bug bounty triage and contributed to open-source security tooling while building a personal exploit library.</p>
+      <div class="tl-row">
+        <div class="tl-year"><div class="tl-year-n">2024</div><div class="tl-year-tag">ENROLLED</div></div>
+        <div class="tl-num">03</div>
+        <div class="tl-body"><h3>B.E. Cyber Security — Sri Shakthi Institute</h3><p>Started formal degree in Computer Science (Cyber Security), Coimbatore. Affiliated with the Cloud Computing & Cybersecurity Research Lab.</p></div>
       </div>
-      <div class="timeline-item" data-aos="fade-up">
-        <div class="timeline-dot"></div>
-        <div class="timeline-date">2024 — TOP TIER</div>
-        <h3>Top 6% on TryHackMe</h3>
-        <p>Completed 56+ rooms and earned 20+ badges, with a growing focus shifting toward red teaming and cloud exploitation.</p>
+      <div class="tl-row">
+        <div class="tl-year"><div class="tl-year-n">2026</div><div class="tl-year-tag">SHIPPING</div></div>
+        <div class="tl-num">04</div>
+        <div class="tl-body"><h3>CloudCompliance published — OpenTofu Registry + PyPI + Docker</h3><p>Published open-source SOC2 Terraform module. 46 AWS resources, 9 security modules, 10 SOC2 CC6-CC8 controls — zero manual configuration. Active across v1.0–v1.4.</p></div>
       </div>
-      <div class="timeline-item" data-aos="fade-up">
-        <div class="timeline-dot"></div>
-        <div class="timeline-date">2025 — PRESENT</div>
-        <h3>Building &amp; researching</h3>
-        <p>Developing the Intelligent Compiler platform while researching container escapes, IAM misconfigurations and C2 evasion.</p>
+      <div class="tl-row">
+        <div class="tl-year"><div class="tl-year-n">2026</div><div class="tl-year-tag">1st PLACE</div></div>
+        <div class="tl-num">05</div>
+        <div class="tl-body"><h3>SecLeaf CTF Q4 2026 — 1st Place, Team BeyondBug</h3><p>Solved reverse engineering, binary exploitation, cryptography, and web challenges. First place finish in an online competition.</p></div>
       </div>
     </div>
-
-    <div class="section-head" style="margin-top:4rem;" data-aos="fade-up">
-      <span class="section-eyebrow">// 03 — CREDENTIALS</span>
-      <h2 class="section-title">Field Credentials</h2>
-      <p class="section-sub">Badges, rankings and certifications. Add new cards as you earn them.</p>
-    </div>
-    <div class="badges-grid" data-aos="fade-up">
-      <div class="badge-card">
-        <i class="fab fa-tryhackme"></i>
-        <h4>TryHackMe — Top 6%</h4>
-        <span>56 rooms · 20+ badges · JOKER53</span>
-      </div>
-      <div class="badge-card">
-        <i class="fas fa-bug"></i>
-        <h4>Bug Bounty Triage</h4>
-        <span>Active reporter, 120+ findings</span>
-      </div>
-      <div class="badge-card">
-        <i class="fas fa-trophy"></i>
-        <h4>CTF Competitor</h4>
-        <span>20+ events played</span>
-      </div>
-      <div class="badge-card placeholder">
-        <i class="fas fa-plus"></i>
-        <span>Add a certification (OSCP, eJPT, CEH...)</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- SHOWCASE -->
-  <section id="showcase" style="margin-top:6rem;">
-    <div class="section-head" data-aos="fade-up">
-      <span class="section-eyebrow">// 04 — EXPERTISE</span>
-      <h2 class="section-title">Expertise Carousel</h2>
-    </div>
-    <div class="swiper-container" id="skillsSwiper">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide"><div class="slide-icon"><i class="fas fa-skull"></i></div><div class="slide-title">Red Teaming</div><ul class="skill-list"><li><i class="fas fa-check-circle"></i> Adversary Simulation</li><li><i class="fas fa-check-circle"></i> C2 Frameworks</li><li><i class="fas fa-check-circle"></i> Evasion &amp; Bypass</li><li><i class="fas fa-chart-line"></i> MITRE ATT&amp;CK</li></ul></div>
-        <div class="swiper-slide"><div class="slide-icon"><i class="fas fa-globe"></i></div><div class="slide-title">Web Security</div><ul class="skill-list"><li><i class="fas fa-bug"></i> XSS / CSRF / SSRF</li><li><i class="fas fa-database"></i> SQLi / NoSQLi</li><li><i class="fas fa-lock"></i> JWT / OAuth attacks</li><li><i class="fas fa-tachometer-alt"></i> Burp Suite Mastery</li></ul></div>
-        <div class="swiper-slide"><div class="slide-icon"><i class="fas fa-code"></i></div><div class="slide-title">Exploit Dev</div><ul class="skill-list"><li><i class="fab fa-python"></i> Custom exploits</li><li><i class="fas fa-terminal"></i> Buffer Overflows</li><li><i class="fas fa-microchip"></i> Reverse Engineering</li><li><i class="fas fa-tools"></i> Ghidra / x64dbg</li></ul></div>
-        <div class="swiper-slide"><div class="slide-icon"><i class="fas fa-cloud"></i></div><div class="slide-title">Cloud &amp; Containers</div><ul class="skill-list"><li><i class="fab fa-aws"></i> AWS pentesting</li><li><i class="fab fa-docker"></i> Container escapes</li><li><i class="fas fa-cubes"></i> Kubernetes security</li><li><i class="fas fa-shield"></i> IAM misconfigs</li></ul></div>
-        <div class="swiper-slide"><div class="slide-icon"><i class="fas fa-network-wired"></i></div><div class="slide-title">Network Pentesting</div><ul class="skill-list"><li><i class="fas fa-wifi"></i> Wireless attacks</li><li><i class="fas fa-ethernet"></i> VLAN hopping</li><li><i class="fas fa-shield-virus"></i> Nmap scripting</li><li><i class="fas fa-chart-simple"></i> Lateral movement</li></ul></div>
-      </div>
-      <div class="swiper-pagination"></div>
-    </div>
-  </section>
-
-  <!-- CYBER RANGE / GAME -->
-  <section id="range" style="margin-top:6rem;">
-    <div class="section-head" data-aos="fade-up">
-      <span class="section-eyebrow">// 05 — LIVE DEFENSE</span>
-      <h2 class="section-title">Cyber Range</h2>
-      <p class="section-sub">The node network drifting behind this entire page isn't just decoration. Engage the drill and threat nodes spawn across the whole background — click each one before it fades to score. Nothing leaves your browser.</p>
-    </div>
-    <div class="range-panel" data-aos="fade-up">
-      <div>
-        <div class="terminal">
-          <div class="terminal-line"><span class="prompt">$</span> firewall_drill --status</div>
-          <div class="terminal-line">background network: online.</div>
-          <div class="terminal-line"><span class="prompt">$</span> awaiting operator input</div>
-        </div>
-        <div class="game-stats-row">
-          <div><span class="g-label">SCORE</span><span class="g-value" id="liveScore">0</span></div>
-          <div><span class="g-label">TIME</span><span class="g-value" id="liveTime">30</span></div>
-          <div><span class="g-label">BEST</span><span class="g-value" id="bestScore">0</span></div>
-        </div>
-      </div>
-      <div>
-        <button class="btn btn-primary engage-btn mono" id="engageBtn"><i class="fas fa-play"></i> Start Drill</button>
-        <p style="margin-top:1rem; font-size:.85rem;">30 second round, runs on the page background · click nodes anywhere on screen · press <strong>Esc</strong> to abort.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- PROJECT -->
-  <section id="project" style="margin-top:6rem;">
-    <div class="section-head" data-aos="fade-up">
-      <span class="section-eyebrow">// 06 — BUILD</span>
-      <h2 class="section-title">Flagship Project</h2>
-    </div>
-    <div class="project-grid" data-aos="fade-up">
-      <div style="display: flex; flex-direction: column; gap: 1.6rem;">
-        <div class="project-main">
-          <div>
-            <i class="fas fa-network-wired icon-lg"></i>
-            <h3>FLAMES</h3>
-            <p>Interactive web-based training platform designed to teach firewall and network security concepts in a hands-on, gamified manner.</p>
-            <div class="project-tech">
-              <span class="social-link-btn">TypeScript</span>
-              <span class="social-link-btn">React</span>
-              <span class="social-link-btn">Network Security</span>
-            </div>
-          </div>
-          <div>
-            <div class="project-links-group">
-              <a href="https://github.com/JOKER-53/FLAMES" target="_blank" class="social-link-btn"><i class="fab fa-github"></i> Code</a>
-            </div>
-          </div>
-        </div>
-        
-        <div class="project-main">
-          <div>
-            <i class="fas fa-laptop-code icon-lg"></i>
-            <h3>Intelligent Compiler</h3>
-            <p>A modern web-based intelligent compiler with AI-powered error detection and fixing capabilities.</p>
-            <div class="project-tech">
-              <span class="social-link-btn">HTML/JS</span>
-              <span class="social-link-btn">Web</span>
-              <span class="social-link-btn">AI</span>
-            </div>
-          </div>
-          <div>
-            <div class="project-links-group">
-              <a href="https://github.com/JOKER-53/IntelligentCompiler" target="_blank" class="social-link-btn"><i class="fab fa-github"></i> Code</a>
-              <a href="https://intelligentcompiler.onrender.com" target="_blank" class="social-link-btn"><i class="fas fa-rocket"></i> Live Demo</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <div class="project-more">
-        <i class="fab fa-github"></i>
-        <h3>More on GitHub</h3>
-        <p>DesktopCompanion, learn-git, nodewipe, gifygrub, and other tools live in my repository list — new things get pushed regularly.</p>
-        <a href="https://github.com/JOKER-53" target="_blank" class="btn"><i class="fab fa-github"></i> Browse Repositories</a>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- CONTACT -->
-  <section id="contact" style="margin-top:6rem;">
-    <div class="section-head" data-aos="fade-up">
-      <span class="section-eyebrow">// 07 — CONNECT</span>
-      <h2 class="section-title">Secure Channel</h2>
-    </div>
-    <div class="contact-grid">
-      <div data-aos="fade-up">
-        <div class="contact-detail"><i class="fas fa-envelope"></i> <span>kadhiravan226@gmail.com</span><button class="copy-btn" data-copy="kadhiravan226@gmail.com" title="Copy email"><i class="fas fa-copy"></i></button></div>
-        <div class="contact-detail"><i class="fas fa-phone-alt"></i> <span>+91 95976 45268</span><button class="copy-btn" data-copy="+919597645268" title="Copy number"><i class="fas fa-copy"></i></button></div>
-        <div class="contact-detail"><i class="fas fa-map-marker-alt"></i> <span>India / Remote</span></div>
-        <div class="social-icon-group">
-          <a href="https://github.com/JOKER-53" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
-          <a href="https://www.linkedin.com/in/kadhiravan-e-g-028818327" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-          <a href="https://www.instagram.com/__kadhiravan__" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-          <a href="https://tryhackme.com/r/p/JOKER53" target="_blank" aria-label="TryHackMe"><i class="fas fa-shield-alt"></i></a>
-        </div>
-        <div class="pgp-box"><i class="fas fa-fingerprint"></i> PGP fingerprint: 3A7F 8B2C ... available on request</div>
-      </div>
-      <form action="https://formspree.io/f/xwppjnle" method="POST" class="contact-form" data-aos="fade-up" data-aos-delay="100">
-        <label>HANDLE</label>
-        <input type="text" name="name" placeholder="your name" required>
-        <label>EMAIL</label>
-        <input type="email" name="email" placeholder="you@example.com" required>
-        <label>MESSAGE</label>
-        <textarea name="message" rows="4" placeholder="encrypted message / inquiry" required></textarea>
-        <button type="submit" class="submit-btn"><i class="fas fa-paper-plane"></i> TRANSMIT</button>
-      </form>
-    </div>
-  </section>
-
-</div>
-
-<button class="back-to-top" id="backToTop" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
-
-<div class="game-running-badge" id="gameBadge">
-  <span class="pulse-dot"></span> <span id="gameBadgeText">Drill running — Score 0 — 30s</span>
-</div>
-
-<!-- Command Palette -->
-<div class="cmdk-overlay" id="cmdkOverlay">
-  <div class="cmdk-box">
-    <input class="cmdk-input" id="cmdkInput" type="text" placeholder="Jump to a section or action..." autocomplete="off">
-    <div class="cmdk-list" id="cmdkList"></div>
-    <div class="cmdk-hint">↑↓ navigate · Enter select · Esc close</div>
   </div>
-</div>
+</section>
 
-<div class="toast" id="toast"></div>
+<!-- SKILLS -->
+<section class="sec" id="skills">
+  <div class="sec-inner">
+    <div class="sec-head">
+      <h2>What I Do</h2>
+      <div class="sec-meta">Hover a card</div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;border:var(--b)">
+      <div style="padding:2.5rem;border-right:var(--b);border-bottom:var(--b);transition:background 0.2s" onmouseenter="this.style.background='#111'" onmouseleave="this.style.background=''">
+        <div style="font-family:var(--disp);font-size:1.6rem;letter-spacing:0.04em;margin-bottom:0.8rem">Red Teaming</div>
+        <p style="font-size:0.75rem;color:#555;line-height:1.9;max-width:40ch;font-weight:400">Adversary simulation, C2 framework operation, evasion and bypass, MITRE ATT&CK mapping end-to-end.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:1.2rem">
+          <span class="proj-tag">Metasploit</span><span class="proj-tag">C2 Frameworks</span><span class="proj-tag">MITRE ATT&CK</span>
+        </div>
+      </div>
+      <div style="padding:2.5rem;border-bottom:var(--b);transition:background 0.2s" onmouseenter="this.style.background='#111'" onmouseleave="this.style.background=''">
+        <div style="font-family:var(--disp);font-size:1.6rem;letter-spacing:0.04em;margin-bottom:0.8rem">Web Security</div>
+        <p style="font-size:0.75rem;color:#555;line-height:1.9;max-width:40ch;font-weight:400">XSS, CSRF, SSRF, SQLi, JWT and OAuth attacks. Burp Suite extension authoring. Active bug bounty reporter.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:1.2rem">
+          <span class="proj-tag">Burp Suite</span><span class="proj-tag">OWASP Top 10</span><span class="proj-tag">Bug Bounty</span>
+        </div>
+      </div>
+      <div style="padding:2.5rem;border-right:var(--b);border-bottom:var(--b);transition:background 0.2s" onmouseenter="this.style.background='#111'" onmouseleave="this.style.background=''">
+        <div style="font-family:var(--disp);font-size:1.6rem;letter-spacing:0.04em;margin-bottom:0.8rem">Cloud Security</div>
+        <p style="font-size:0.75rem;color:#555;line-height:1.9;max-width:40ch;font-weight:400">AWS & GCP pentesting, IAM misconfiguration exploitation, Kubernetes hardening via Terraform IaC — CIS benchmarked and SOC2 aligned.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:1.2rem">
+          <span class="proj-tag">AWS</span><span class="proj-tag">Terraform</span><span class="proj-tag">Kubernetes</span><span class="proj-tag">IAM</span>
+        </div>
+      </div>
+      <div style="padding:2.5rem;border-bottom:var(--b);transition:background 0.2s" onmouseenter="this.style.background='#111'" onmouseleave="this.style.background=''">
+        <div style="font-family:var(--disp);font-size:1.6rem;letter-spacing:0.04em;margin-bottom:0.8rem">DevSecOps</div>
+        <p style="font-size:0.75rem;color:#555;line-height:1.9;max-width:40ch;font-weight:400">CI/CD security pipeline design with Jenkins and GitHub Actions. Trivy container scanning. Prometheus + Grafana + Loki observability stacks.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:1.2rem">
+          <span class="proj-tag">Trivy</span><span class="proj-tag">Grafana</span><span class="proj-tag">Jenkins</span><span class="proj-tag">CI/CD</span>
+        </div>
+      </div>
+      <div style="padding:2.5rem;border-right:var(--b);transition:background 0.2s" onmouseenter="this.style.background='#111'" onmouseleave="this.style.background=''">
+        <div style="font-family:var(--disp);font-size:1.6rem;letter-spacing:0.04em;margin-bottom:0.8rem">Exploit Dev</div>
+        <p style="font-size:0.75rem;color:#555;line-height:1.9;max-width:40ch;font-weight:400">Custom exploit writing in Python, buffer overflow techniques, reverse engineering with Ghidra and x64dbg.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:1.2rem">
+          <span class="proj-tag">Python</span><span class="proj-tag">Ghidra</span><span class="proj-tag">x64dbg</span>
+        </div>
+      </div>
+      <div style="padding:2.5rem;transition:background 0.2s" onmouseenter="this.style.background='#111'" onmouseleave="this.style.background=''">
+        <div style="font-family:var(--disp);font-size:1.6rem;letter-spacing:0.04em;margin-bottom:0.8rem">Network Pentesting</div>
+        <p style="font-size:0.75rem;color:#555;line-height:1.9;max-width:40ch;font-weight:400">Wireless attacks, VLAN hopping, Nmap scripting engine, lateral movement mapping. Top 6% TryHackMe globally, 56+ rooms.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:1.2rem">
+          <span class="proj-tag">Nmap</span><span class="proj-tag">Wireshark</span><span class="proj-tag">Kali Linux</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="sec" id="projects">
+  <div class="sec-inner">
+    <div class="sec-head">
+      <h2>Projects</h2>
+      <div class="sec-meta">github.com/KADHIRAVANEG</div>
+    </div>
+    <div class="projects-wrap">
+
+      <!-- Featured -->
+      <div class="proj proj-featured">
+        <div style="padding:3rem;display:flex;flex-direction:column;justify-content:center">
+          <div class="proj-num">Featured — 001</div>
+          <div class="proj-name">CloudCompliance</div>
+          <div class="proj-tags">
+            <span class="proj-tag">Python</span><span class="proj-sep">·</span>
+            <span class="proj-tag">Terraform</span><span class="proj-sep">·</span>
+            <span class="proj-tag">AWS</span>
+          </div>
+          <div class="proj-date">Jul 2026 – Oct 2026</div>
+          <p class="proj-desc">SOC2-aligned AWS security baseline IaC module. Authored and published on the Terraform / OpenTofu Registry, PyPI (pip install cloudcompliance), and GitHub Container Registry. Actively maintained across v1.0–v1.4. Automates provisioning of 46 AWS resources across 9 security modules, enforcing 10 SOC2 CC6-CC8 controls — KMS encryption, S3 public-access blocks, least-privilege IAM, GuardDuty, CloudTrail. Zero manual configuration.</p>
+          <div class="proj-links">
+            <a href="https://github.com/KADHIRAVANEG/terraform-aws-cloudcompliance" target="_blank" rel="noopener" class="plink">View on GitHub</a>
+          </div>
+        </div>
+        <div class="proj-visual">
+          <svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="10" y="10" width="180" height="180" stroke="#E8213A" stroke-width="2" fill="none"/>
+            <rect x="30" y="30" width="140" height="140" stroke="#E8213A" stroke-width="1" fill="none" stroke-dasharray="4 4"/>
+            <rect x="70" y="70" width="60" height="60" stroke="#E8213A" stroke-width="1.5" fill="none"/>
+            <line x1="100" y1="10" x2="100" y2="190" stroke="#2a2a2a" stroke-width="1"/>
+            <line x1="10" y1="100" x2="190" y2="100" stroke="#2a2a2a" stroke-width="1"/>
+            <circle cx="100" cy="100" r="8" fill="#E8213A"/>
+            <circle cx="100" cy="100" r="20" stroke="#E8213A" stroke-width="1" fill="none" stroke-dasharray="3 3"/>
+            <circle cx="100" cy="100" r="40" stroke="#333" stroke-width="1" fill="none"/>
+            <circle cx="60" cy="60" r="4" fill="#555"/>
+            <circle cx="140" cy="60" r="4" fill="#555"/>
+            <circle cx="60" cy="140" r="4" fill="#555"/>
+            <circle cx="140" cy="140" r="4" fill="#E8213A"/>
+            <line x1="100" y1="100" x2="140" y2="140" stroke="#E8213A" stroke-width="1"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="proj">
+        <div class="proj-num">002</div>
+        <div class="proj-name">FLAMES</div>
+        <div class="proj-tags">
+          <span class="proj-tag">TypeScript</span><span class="proj-sep">·</span>
+          <span class="proj-tag">React</span><span class="proj-sep">·</span>
+          <span class="proj-tag">Three.js</span><span class="proj-sep">·</span>
+          <span class="proj-tag">SQLite</span>
+        </div>
+        <div class="proj-date">Aug 2026 – Dec 2026</div>
+        <p class="proj-desc">Containerized browser-based firewall training platform. FortiOS-inspired and Palo Alto PAN-OS-inspired environments with a shared TypeScript evaluation kernel supporting LAN/DMZ/WAN zones. Interactive Three.js 3D hardware view with raycast-calibrated ports. Express + SQLite backend, salted scrypt hashing, HTTP-only sessions. AI tutor generates hints from failed traffic flows.</p>
+        <div class="proj-links">
+          <a href="https://github.com/JOKER-53/FLAMES" target="_blank" rel="noopener" class="plink">View on GitHub</a>
+        </div>
+      </div>
+
+      <div class="proj">
+        <div class="proj-num">003</div>
+        <div class="proj-name">Nodewipe</div>
+        <div class="proj-tags">
+          <span class="proj-tag">Rust</span><span class="proj-sep">·</span>
+          <span class="proj-tag">AUR</span><span class="proj-sep">·</span>
+          <span class="proj-tag">CLI</span>
+        </div>
+        <div class="proj-date">Sep 2026 – Present</div>
+        <p class="proj-desc">Arch Linux AUR CLI tool for workspace and artifact sanitization. Recursively scans development directories and purges high-footprint build artifacts (node_modules, .cargo, build cache). Low-overhead directory traversal, disk-space aggregation, interactive deletion confirmation prompts. Published as AUR package — maintainer: POSIX Shell / CLI Systems.</p>
+        <div class="proj-links">
+          <a href="https://github.com/KADHIRAVANEG/nodewipe" target="_blank" rel="noopener" class="plink">GitHub</a>
+          <a href="https://aur.archlinux.org/packages/nodewipe" target="_blank" rel="noopener" class="plink plink-alt">AUR Package</a>
+        </div>
+      </div>
+
+      <div class="proj">
+        <div class="proj-num">004</div>
+        <div class="proj-name">SecureKube</div>
+        <div class="proj-tags">
+          <span class="proj-tag">Kubernetes</span><span class="proj-sep">·</span>
+          <span class="proj-tag">Terraform</span><span class="proj-sep">·</span>
+          <span class="proj-tag">IaC</span>
+        </div>
+        <div class="proj-date">2026</div>
+        <p class="proj-desc">CIS-aligned, zero-trust Kubernetes cluster provisioned via IaC. No manual security configuration required — hardened out of the box with network policies, RBAC, and security benchmarks.</p>
+        <div class="proj-links">
+          <a href="https://github.com/KADHIRAVANEG/secure-kube" target="_blank" rel="noopener" class="plink">View on GitHub</a>
+        </div>
+      </div>
+
+      <div class="proj">
+        <div class="proj-num">005</div>
+        <div class="proj-name">IntelligentCompiler</div>
+        <div class="proj-tags">
+          <span class="proj-tag">HTML</span><span class="proj-sep">·</span>
+          <span class="proj-tag">JavaScript</span><span class="proj-sep">·</span>
+          <span class="proj-tag">AI</span>
+        </div>
+        <div class="proj-date">2025 – 2026</div>
+        <p class="proj-desc">Browser-based multi-language IDE with AI-powered error detection and auto-fix capabilities. Live and deployed on Render.</p>
+        <div class="proj-links">
+          <a href="https://github.com/KADHIRAVANEG/IntelligentCompiler" target="_blank" rel="noopener" class="plink plink-alt">GitHub</a>
+          <a href="https://intelligentcompiler.onrender.com" target="_blank" rel="noopener" class="plink">Live Demo</a>
+        </div>
+      </div>
+
+      <div class="proj">
+        <div class="proj-num">006</div>
+        <div class="proj-name">grub-themes + sddm-themes</div>
+        <div class="proj-tags">
+          <span class="proj-tag">QML</span><span class="proj-sep">·</span>
+          <span class="proj-tag">JavaScript</span><span class="proj-sep">·</span>
+          <span class="proj-tag">Linux</span>
+        </div>
+        <div class="proj-date">2024 – Present</div>
+        <p class="proj-desc">Custom GRUB bootloader and SDDM login screen themes for Linux. Aesthetic system experience from power-on. 6 GitHub stars on grub-themes.</p>
+        <div class="proj-links">
+          <a href="https://github.com/KADHIRAVANEG/grub-themes" target="_blank" rel="noopener" class="plink plink-alt">GRUB</a>
+          <a href="https://github.com/KADHIRAVANEG/sddm-themes" target="_blank" rel="noopener" class="plink">SDDM</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CERTS -->
+<section class="sec" id="certs">
+  <div class="sec-inner">
+    <div class="sec-head">
+      <h2>Certifications</h2>
+      <div class="sec-meta">Verified credentials</div>
+    </div>
+    <div class="certs-grid">
+      <div class="cert">
+        <div class="cert-badge red">🏆 1st Place</div>
+        <div class="cert-title">SecLeaf CTF Q4 2026</div>
+        <div class="cert-issuer">Team BeyondBug — Reverse engineering, binary exploitation, cryptography, web challenges</div>
+      </div>
+      <div class="cert">
+        <div class="cert-badge">OCFA</div>
+        <div class="cert-title">OPSWAT Cybersecurity Fundamentals Associate</div>
+        <div class="cert-issuer">OPSWAT · Issued Sep 2026 — Endpoint security, network defense, threat analysis</div>
+      </div>
+      <div class="cert">
+        <div class="cert-badge black">Udemy</div>
+        <div class="cert-title">Ultimate DevSecOps Bootcamp</div>
+        <div class="cert-issuer">Udemy — Development, Security, and Operations pipeline practices</div>
+      </div>
+      <div class="cert">
+        <div class="cert-badge">Cisco</div>
+        <div class="cert-title">Introduction to Cybersecurity</div>
+        <div class="cert-issuer">Cisco — Core concepts in cyber threats, online safety, and real-world impact of cybersecurity</div>
+      </div>
+      <div class="cert">
+        <div class="cert-badge black">IBM</div>
+        <div class="cert-title">Vulnerability Management</div>
+        <div class="cert-issuer">IBM SkillsBuild — Vulnerability lifecycle, risk prioritization, remediation strategies in enterprise environments</div>
+      </div>
+      <div class="cert">
+        <div class="cert-badge red">TryHackMe</div>
+        <div class="cert-title">Top 6% Global Rank</div>
+        <div class="cert-issuer">TryHackMe — 56+ rooms completed · 20+ badges earned · JOKER53</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="sec" id="contact">
+  <div class="sec-inner">
+    <div class="sec-head">
+      <h2>Contact</h2>
+      <div class="sec-meta">India / Remote</div>
+    </div>
+    <div class="contact-wrap">
+      <div class="contact-left">
+        <div class="cinfo">
+          <span class="clabel">Email</span>
+          <span class="cval">kadhiravanegk@gmail.com <button class="cpybtn" onclick="doCopy('kadhiravanegk@gmail.com')">Copy</button></span>
+        </div>
+        <div class="cinfo">
+          <span class="clabel">Phone</span>
+          <span class="cval">+91 95976 45268 <button class="cpybtn" onclick="doCopy('+919597645268')">Copy</button></span>
+        </div>
+        <div class="cinfo">
+          <span class="clabel">Location</span>
+          <span class="cval">Coimbatore, TN — available globally</span>
+        </div>
+        <div class="cinfo">
+          <span class="clabel">Resume</span>
+          <span class="cval"><a href="KADHIRAVANEG-Resume.pdf" download class="btn btn-yellow" style="font-size:0.62rem;padding:0.4rem 0.9rem">↓ Download PDF</a></span>
+        </div>
+        <div class="socials-strip">
+          <a href="https://github.com/KADHIRAVANEG" target="_blank" rel="noopener" class="soc-btn" title="GitHub">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/kadhiravan-e-g" target="_blank" rel="noopener" class="soc-btn" title="LinkedIn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/__kadhiravan__" target="_blank" rel="noopener" class="soc-btn" title="Instagram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          </a>
+          <a href="https://tryhackme.com/r/p/JOKER53" target="_blank" rel="noopener" class="soc-btn" title="TryHackMe">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M10.705 0C7.54 0 4.902 2.077 4.045 4.927a4.093 4.093 0 00-.538-.035C1.573 4.892 0 6.464 0 8.398s1.573 3.506 3.507 3.506h7.198V0zm2.59 24c3.166 0 5.804-2.078 6.66-4.928.18.023.36.036.538.036 1.934 0 3.507-1.573 3.507-3.507s-1.573-3.506-3.507-3.506h-7.197V24z"/></svg>
+          </a>
+          <a href="mailto:kadhiravanegk@gmail.com" class="soc-btn" title="Email">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg>
+          </a>
+          <a href="https://orcid.org/0009-0006-1123-471X" target="_blank" rel="noopener" class="soc-btn" title="ORCID">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947-.947-.431-.947-.947.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.025-5.325 5.025h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 3.872-2.484 3.872-3.722 0-2.016-1.284-3.722-3.891-3.722h-2.278z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="contact-right">
+        <form action="https://formspree.io/f/xwppjnle" method="POST">
+          <div class="form-field">
+            <label class="form-label" for="f-name">Name</label>
+            <input class="form-ctrl" id="f-name" type="text" name="name" placeholder="your name" required autocomplete="name">
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="f-email">Email</label>
+            <input class="form-ctrl" id="f-email" type="email" name="email" placeholder="you@example.com" required autocomplete="email">
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="f-msg">Message</label>
+            <textarea class="form-ctrl" id="f-msg" name="message" placeholder="Your message..." required></textarea>
+          </div>
+          <button type="submit" class="form-submit">Send message</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
 
 <footer>
-  <p>© <span id="year"></span> KADHIRAVAN — operate beyond the wire</p>
+  <div>© <span id="yr"></span> KADHIRAVAN E.G — <span>operate beyond the wire</span></div>
+  <div style="display:flex;gap:1.5rem">
+    <a href="https://github.com/KADHIRAVANEG" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://www.linkedin.com/in/kadhiravan-e-g" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="KADHIRAVANEG-Resume.pdf" download>Resume PDF</a>
+  </div>
 </footer>
 
+<button id="btt" aria-label="Back to top">↑</button>
+<div id="toast"></div>
 
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script src="script.js"></script>
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+// Count up
+function countUp(id, end, pre, suf) {
+  const el = document.getElementById(id);
+  let n = 0; const st = end / 50;
+  const iv = setInterval(() => {
+    n = Math.min(n + st, end);
+    el.innerHTML = (pre||'') + Math.floor(n) + '<span class="stat-unit">' + (suf||'') + '</span>';
+    if (n >= end) clearInterval(iv);
+  }, 18);
+}
+const io = new IntersectionObserver(en => {
+  if (en[0].isIntersecting) {
+    countUp('s1', 26, '', '+');
+    countUp('s2', 6, 'Top ', '%');
+    countUp('s3', 56, '', '+');
+    io.disconnect();
+  }
+}, { threshold: 0.2 });
+io.observe(document.getElementById('home'));
+
+// Mobile nav
+const mb = document.getElementById('mobBtn'), nl = document.getElementById('navLinks');
+mb.addEventListener('click', () => {
+  nl.classList.toggle('open');
+  mb.textContent = nl.classList.contains('open') ? '✕' : '☰';
+});
+nl.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  nl.classList.remove('open'); mb.textContent = '☰';
+}));
+
+// Back to top
+const btt = document.getElementById('btt');
+window.addEventListener('scroll', () => btt.classList.toggle('on', window.scrollY > 500), { passive: true });
+btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+// Copy
+function doCopy(t) {
+  navigator.clipboard.writeText(t).then(() => showToast('Copied to clipboard'));
+}
+function showToast(m) {
+  const t = document.getElementById('toast');
+  t.textContent = m; t.classList.add('on');
+  setTimeout(() => t.classList.remove('on'), 2000);
+}
+</script>
 </body>
 </html>
